@@ -1,5 +1,12 @@
+import Layout from "../../layout/Layout";
+import UserTable from "./UserTable";
+
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <Layout>
+      <UserTable />
+    </Layout>
+  );
 };
 
 export default Home;
