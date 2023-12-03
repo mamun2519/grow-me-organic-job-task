@@ -4,10 +4,18 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { CheckBox } from "@mui/icons-material";
+
 import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
-const label = { inputProps: { "aria-label": "Checkbox demo" } };
-export default function OurAccordion({ category }: { category: any }) {
+
+interface IAccourdingProps {
+  department: string;
+  sub_departments: string[];
+}
+export default function OurAccordion({
+  category,
+}: {
+  category: IAccourdingProps;
+}) {
   return (
     <div>
       <Accordion>
@@ -20,7 +28,7 @@ export default function OurAccordion({ category }: { category: any }) {
             <FormGroup>
               <FormControlLabel
                 //     required
-                control={<Checkbox />}
+                control={<Checkbox checked={false} />}
                 label={category.department}
               />
             </FormGroup>
@@ -28,13 +36,13 @@ export default function OurAccordion({ category }: { category: any }) {
         </AccordionSummary>
         <AccordionDetails>
           <div className="border px-10 rounded-2xl shadow-sm">
-            {category.sub_departments.map((data, index) => (
+            {category?.sub_departments?.map((data, index) => (
               <Typography key={index}>
                 <FormGroup>
                   <FormControlLabel
                     //     required
                     control={<Checkbox />}
-                    label={category.department}
+                    label={data}
                   />
                 </FormGroup>
               </Typography>
