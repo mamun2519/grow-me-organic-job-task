@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import OurAccordion from "../ui/Accordion";
-import { Container, Typography } from "@mui/material";
+import { useState } from "react";
+
+import { Container } from "@mui/material";
 import { DepartmentCheckbox } from "../ui/DepartmentCheckbox";
 interface CheckedDepartments {
   [key: string]: boolean;
@@ -24,40 +24,33 @@ const Category = () => {
     isChecked: boolean,
     subDepartments: string[]
   ) => {
-    const newCheckedDepartments = { ...checkedDepartments };
+    const updatedCheckedDepartments = { ...checkedDepartments };
 
     if (isChecked) {
-      newCheckedDepartments[department] = true;
+      updatedCheckedDepartments[department] = true;
       subDepartments.forEach((subDepartment) => {
-        newCheckedDepartments[subDepartment] = true;
+        updatedCheckedDepartments[subDepartment] = true;
       });
     } else {
-      newCheckedDepartments[department] = false;
+      updatedCheckedDepartments[department] = false;
       subDepartments.forEach((subDepartment) => {
-        newCheckedDepartments[subDepartment] = false;
+        updatedCheckedDepartments[subDepartment] = false;
       });
     }
 
-    setCheckedDepartments(newCheckedDepartments);
+    setCheckedDepartments(updatedCheckedDepartments);
   };
   return (
     <div>
-      {/* {data.map((category, index) => (
-        <OurAccordion category={category} key={index} />
-      ))} */}
       <Container>
-        {data.map((department) => (
+        {data.map((department, i) => (
           <DepartmentCheckbox
-            key={department}
+            key={i}
             departmentData={department}
             checkedDepartments={checkedDepartments}
             onDepartmentChange={handleDepartmentChange}
           />
         ))}
-        <Typography variant="body1">
-          <strong>Checked Departments:</strong>{" "}
-          {JSON.stringify(checkedDepartments)}
-        </Typography>
       </Container>
     </div>
   );

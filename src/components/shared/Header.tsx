@@ -1,7 +1,4 @@
-import {
-  getFromLocalStorage,
-  removeLocalStorage,
-} from "../../utils/local-storage";
+import { getFromLocalStorage } from "../../utils/local-storage";
 import { useEffect, useState } from "react";
 import OurDialog from "../ui/Dailog";
 
@@ -31,25 +28,10 @@ const Header = () => {
 
       <div className=" flex   items-center gap-5">
         <div>
-          <p>{user?.name},</p>
+          <p>{user?.name}</p>
         </div>
-        {user?.email && (
-          <button
-            onClick={() => removeLocalStorage("USER_FORM")}
-            className="px-8 py-2 bg-red-500 text-white rounded-xl"
-          >
-            Logout
-          </button>
-        )}
       </div>
-      {open && (
-        <OurDialog
-          open={open}
-          user={user}
-          handleClickOpen={handleClickOpen}
-          handleClose={handleClose}
-        />
-      )}
+      {open && <OurDialog open={open} user={user} handleClose={handleClose} />}
     </div>
   );
 };

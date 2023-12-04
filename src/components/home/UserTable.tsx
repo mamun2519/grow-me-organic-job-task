@@ -13,16 +13,16 @@ const UserTable = () => {
       });
   }, []);
   return (
-    <div className=" border max-w-7xl mx-auto rounded-2xl p-5  mt-10 h-screen">
+    <div className=" border max-w-7xl mx-auto rounded-2xl p-5  mt-10 pb-20 ">
       <Typography>All User Information</Typography>
 
       <div className="mt-5">
         <UserInformation data={userData} />
       </div>
 
-      <div className="mt-10">
+      <div className="mt-10 pb-20">
         <Typography>Our Category</Typography>
-        <div className="mt-5">
+        <div className="mt-5 ">
           <Category />
         </div>
       </div>
